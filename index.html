@@ -1,115 +1,444 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Official digital platform of Ikot Ukap Itam Community Development Association, Itu LGA, Akwa Ibom State, Nigeria.">
-  <meta name="theme-color" content="#54210f">
-  <title>IUCDA | Ikot Ukap Itam Community Development Association</title>
-  <style>
-    :root{--brown:#54210f;--brown2:#71351b;--gold:#d9a52b;--cream:#fff8e9;--ink:#28231f;--muted:#6e655e;--white:#fff;--green:#286b3b}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.6;background:#fff}
-    a{color:inherit;text-decoration:none}.container{width:min(1120px,92%);margin:auto}
-    .topbar{background:var(--brown);color:#fff;font-size:.88rem;padding:8px 0}.topbar .container{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-    header{background:#fff;position:sticky;top:0;z-index:20;box-shadow:0 2px 12px #00000012}.navwrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:12px 0}
-    .brand{display:flex;align-items:center;gap:12px;min-width:0}.brand img{width:62px;height:62px;object-fit:contain;border-radius:50%}.brand strong{display:block;color:var(--brown);font-size:1rem;line-height:1.2}.brand span{font-size:.78rem;color:var(--muted)}
-    nav{display:flex;align-items:center;gap:17px;flex-wrap:wrap;font-size:.9rem;font-weight:700}nav a:hover{color:var(--brown2)}.menu-btn{display:none;background:var(--brown);color:white;border:0;border-radius:6px;padding:9px 12px;font-size:1rem}
-    .hero{background:linear-gradient(110deg,#351407eF,#54210fe8),url('assets/iucda-logo.jpg') center/cover;color:#fff;padding:72px 0 68px}
-    .hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:36px;align-items:center}.eyebrow{color:#f2ca69;font-weight:700;letter-spacing:2px;text-transform:uppercase;font-size:.82rem}
-    h1{font-size:clamp(2.1rem,5vw,4rem);line-height:1.08;margin:12px 0 18px}.hero p{font-size:1.1rem;max-width:680px;color:#fff7e8}.hero-logo{background:#fff;border:5px solid var(--gold);border-radius:18px;padding:12px;max-width:350px;margin:auto;box-shadow:0 15px 40px #0005}.hero-logo img{width:100%;display:block;border-radius:10px}
-    .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}.btn{display:inline-block;border:0;border-radius:7px;padding:12px 19px;font-weight:700;cursor:pointer}.btn-gold{background:var(--gold);color:#281708}.btn-light{background:#fff;color:var(--brown)}.btn-brown{background:var(--brown);color:#fff}
-    section{padding:64px 0}.section-head{text-align:center;max-width:720px;margin:0 auto 34px}.section-head h2{font-size:2rem;color:var(--brown);margin:0 0 8px}.section-head p{color:var(--muted);margin:0}
-    .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:#fff;border:1px solid #eee4d5;border-radius:12px;padding:22px;box-shadow:0 5px 18px #3d1a0909}.card h3{color:var(--brown);margin:8px 0}.icon{width:44px;height:44px;display:grid;place-items:center;border-radius:50%;background:var(--cream);color:var(--brown);font-size:1.35rem}
-    .about{background:var(--cream)}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:38px;align-items:center}.about-box{background:white;padding:28px;border-left:5px solid var(--gold);border-radius:8px}.pill{display:inline-block;background:#f3e2bd;color:var(--brown);padding:5px 11px;border-radius:30px;font-size:.78rem;font-weight:700}
-    .notice{background:#fff8e9;border:1px solid #efd9a8;border-radius:10px;padding:18px;margin:18px 0;color:#65451b}
-    .directory{background:#fafafa}.empty-state{text-align:center;border:1px dashed #c8b99e;border-radius:12px;padding:28px;background:white;color:var(--muted)}
-    .form-section{background:var(--cream)}form{background:#fff;padding:26px;border-radius:12px;box-shadow:0 5px 20px #0000000b;max-width:850px;margin:auto}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.field{display:flex;flex-direction:column;gap:6px}.field.full{grid-column:1/-1}label{font-weight:700;font-size:.9rem;color:#493020}input,select,textarea{width:100%;padding:12px;border:1px solid #d8cfc4;border-radius:7px;font:inherit;background:white}textarea{min-height:100px;resize:vertical}.form-note{font-size:.82rem;color:var(--muted)}
-    .news-card small{color:var(--muted)}.contact-box{background:var(--brown);color:white;border-radius:14px;padding:30px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.contact-box h2{margin:0 0 5px}.contact-box p{margin:0;color:#f8e9d5}
-    footer{background:#281006;color:#f8ead7;padding:32px 0}.footer-grid{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}.footer-small{font-size:.84rem;color:#d9c5ae}
-    .status{display:none;margin-top:15px;padding:12px;border-radius:7px;background:#e8f5e9;color:#205b2a}
-    @media(max-width:850px){nav{display:none;position:absolute;left:0;right:0;top:86px;background:#fff;padding:18px 4%;box-shadow:0 8px 12px #0001;flex-direction:column;align-items:flex-start}nav.open{display:flex}.menu-btn{display:block}.hero-grid,.about-grid{grid-template-columns:1fr}.hero{text-align:center}.hero p{margin-inline:auto}.buttons{justify-content:center}.hero-logo{max-width:260px}.cards{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:560px){.cards{grid-template-columns:1fr}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.brand img{width:50px;height:50px}.brand strong{font-size:.86rem}.brand span{font-size:.7rem}.topbar .container{justify-content:center;text-align:center}.hero{padding:52px 0}.contact-box{padding:23px}}
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Official website of Ikot Ukap Itam Community Development Association, Itu LGA, Akwa Ibom State, Nigeria.">
+<meta name="theme-color" content="#54210f">
+<title>IUCDA | Ikot Ukap Itam Community</title>
+
+<style>
+:root {
+  --brown:#54210f;
+  --brown2:#71351b;
+  --gold:#d9a52b;
+  --cream:#fff8e9;
+  --ink:#28231f;
+  --muted:#6e655e;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;color:var(--ink);line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1120px,92%);margin:auto}
+
+.topbar{background:var(--brown);color:white;padding:8px 0;font-size:13px}
+.topbar .container{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+header{background:white;position:sticky;top:0;z-index:20;box-shadow:0 2px 12px #0002}
+.navwrap{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:12px 0}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:58px;height:58px;object-fit:contain;border-radius:50%}
+.brand strong{display:block;color:var(--brown);line-height:1.2}
+.brand span{font-size:12px;color:var(--muted)}
+nav{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;font-weight:bold}
+nav a:hover{color:var(--gold)}
+.menu-btn{display:none;background:var(--brown);color:white;border:0;padding:10px;border-radius:6px}
+
+.hero{background:linear-gradient(110deg,#351407ee,#54210fe8),url('assets/iucda-logo.jpg') center/cover;color:white;padding:65px 0}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:35px;align-items:center}
+.eyebrow{color:#f2ca69;font-weight:bold;letter-spacing:2px;font-size:13px}
+h1{font-size:clamp(34px,5vw,58px);line-height:1.1;margin:12px 0}
+.hero p{font-size:17px;color:#fff7e8}
+.hero-logo{background:white;border:5px solid var(--gold);border-radius:18px;padding:12px;max-width:320px;margin:auto}
+.hero-logo img{width:100%;display:block;border-radius:10px}
+
+.buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.btn{display:inline-block;padding:12px 18px;border-radius:7px;font-weight:bold;border:0;cursor:pointer}
+.btn-gold{background:var(--gold);color:#281708}
+.btn-light{background:white;color:var(--brown)}
+.btn-brown{background:var(--brown);color:white}
+
+section{padding:60px 0}
+.section-head{text-align:center;max-width:720px;margin:0 auto 30px}
+.section-head h2{color:var(--brown);font-size:30px;margin:0 0 8px}
+.section-head p{color:var(--muted)}
+
+.about{background:var(--cream)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.about-box{background:white;padding:25px;border-left:5px solid var(--gold);border-radius:8px}
+.pill{display:inline-block;background:#f3e2bd;color:var(--brown);padding:5px 12px;border-radius:30px;font-size:12px;font-weight:bold}
+
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:white;border:1px solid #eee4d5;border-radius:12px;padding:22px;box-shadow:0 5px 18px #3d1a0909}
+.card h3{color:var(--brown)}
+.icon{font-size:28px}
+.directory{background:#fafafa}
+.empty-state{text-align:center;border:1px dashed #c8b99e;border-radius:12px;padding:25px;background:white;color:var(--muted)}
+.notice{background:var(--cream);border:1px solid #efd9a8;padding:18px;border-radius:10px}
+
+.form-section{background:var(--cream)}
+form{background:white;padding:25px;border-radius:12px;max-width:850px;margin:auto}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1/-1}
+label{font-weight:bold;font-size:14px;color:#493020}
+input,select,textarea{width:100%;padding:12px;border:1px solid #d8cfc4;border-radius:7px;font:inherit}
+textarea{min-height:100px}
+.form-note{font-size:13px;color:var(--muted)}
+.status{display:none;margin-top:15px;padding:12px;border-radius:7px;background:#e8f5e9;color:#205b2a}
+
+.contact-box{background:var(--brown);color:white;border-radius:14px;padding:28px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.contact-box p{color:#f8e9d5}
+
+footer{background:#281006;color:#f8ead7;padding:30px 0}
+.footer-grid{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-small{font-size:13px;color:#d9c5ae}
+
+@media(max-width:850px){
+nav{display:none;position:absolute;left:0;right:0;top:82px;background:white;padding:18px 4%;flex-direction:column;align-items:flex-start}
+nav.open{display:flex}
+.menu-btn{display:block}
+.hero-grid,.about-grid{grid-template-columns:1fr}
+.hero{text-align:center}
+.hero-logo{max-width:250px}
+.buttons{justify-content:center}
+.cards{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+.cards,.form-grid{grid-template-columns:1fr}
+.field.full{grid-column:auto}
+.brand img{width:48px;height:48px}
+.topbar .container{justify-content:center;text-align:center}
+}
+</style>
 </head>
+
 <body>
-  <div class="topbar"><div class="container"><span>Ikot Ukap Itam • Itu LGA • Akwa Ibom State, Nigeria</span><span>Unity • Development • Prosperity</span></div></div>
-  <header><div class="container navwrap">
-    <a class="brand" href="#home"><img src="assets/iucda-logo.jpg" alt="IUCDA community logo"><span><strong>IKOT UKAP ITAM</strong><span>Community Development Association</span></span></a>
-    <button class="menu-btn" id="menuBtn" aria-label="Open navigation">☰</button>
-    <nav id="nav"><a href="#home">Home</a><a href="#about">About</a><a href="#leadership">Leadership</a><a href="#families">Families</a><a href="#news">News</a><a href="#projects">Projects</a><a href="#register">Register</a><a href="#contact">Contact</a></nav>
-  </div></header>
-  <main>
-    <section class="hero" id="home"><div class="container hero-grid">
-      <div><div class="eyebrow">Our community • Our heritage • Our future</div><h1>Welcome to Ikot Ukap Itam</h1>
-        <p>The official digital home of Ikot Ukap Itam Community Development Association (IUCDA), connecting our people at home and in the diaspora to promote unity, preserve our heritage and support community development.</p>
-        <div class="buttons"><a class="btn btn-gold" href="#about">Explore our community</a><a class="btn btn-light" href="#register">Community registration</a></div>
-      </div>
-      <div class="hero-logo"><img src="assets/iucda-logo.jpg" alt="Ikot Ukap Itam community emblem"></div>
-    </div></section>
-    <section id="about" class="about"><div class="container about-grid">
-      <div><span class="pill">ABOUT IUCDA</span><h2 style="color:var(--brown);font-size:2rem">Connecting our people. Building our future.</h2>
-        <p>Ikot Ukap Itam Community Development Association provides a platform for community members to share information, participate in development initiatives and strengthen relationships across families and generations.</p>
-        <p>This website is designed to serve residents, indigenes and members of the community living outside Ikot Ukap Itam.</p></div>
-      <div class="about-box"><h3>Our guiding values</h3><p><b>Unity:</b> Encourage cooperation, respect and togetherness.</p><p><b>Heritage:</b> Preserve our history, identity and cultural values.</p><p><b>Development:</b> Support transparent, inclusive and sustainable community progress.</p><p><b>Service:</b> Promote responsible leadership and participation.</p></div>
-    </div></section>
-    <section><div class="container"><div class="section-head"><h2>Explore the Community</h2><p>Key areas of community information and participation.</p></div>
-      <div class="cards">
-        <article class="card"><div class="icon">🏛️</div><h3>Traditional Leadership</h3><p>Information about recognised traditional leadership and the village council.</p></article>
-        <article class="card"><div class="icon">👥</div><h3>Village Executives</h3><p>Community association officers, responsibilities and approved contact information.</p></article>
-        <article class="card"><div class="icon">🏠</div><h3>Families & Family Heads</h3><p>A directory of recognised families and their designated representatives.</p></article>
-        <article class="card"><div class="icon">🌱</div><h3>Youth & Women</h3><p>Updates on youth and women organisations, activities and programmes.</p></article>
-        <article class="card"><div class="icon">📰</div><h3>News & Announcements</h3><p>Community notices, meeting information and important updates.</p></article>
-        <article class="card"><div class="icon">🛠️</div><h3>Development Projects</h3><p>Information about community priorities, projects and progress reports.</p></article>
-      </div>
-    </div></section>
-    <section class="directory" id="leadership"><div class="container"><div class="section-head"><h2>Community Leadership</h2><p>Leadership details will be published after confirmation by the community.</p></div>
-      <div class="empty-state"><h3>Leadership directory coming soon</h3><p>Verified names, offices, photographs and tenure details will appear here after IUCDA confirms the official records.</p></div>
-    </div></section>
-    <section id="families"><div class="container"><div class="section-head"><h2>Families & Family Heads</h2><p>Recognising the families that make up Ikot Ukap Itam.</p></div>
-      <div class="notice"><b>Family directory:</b> Family names and family-head details have not yet been supplied. Families can submit their information through the registration form. Entries should be verified before public display.</div>
-      <div class="empty-state"><h3>Family directory is being prepared</h3><p>Only approved family records should be displayed. Personal phone numbers and private details should not be published without consent.</p></div>
-    </div></section>
-    <section class="about" id="news"><div class="container"><div class="section-head"><h2>Community News & Announcements</h2><p>Official updates will be posted here by authorised community administrators.</p></div>
-      <div class="cards"><article class="card news-card"><small>Community information</small><h3>Welcome to the IUCDA website</h3><p>This platform is being established to improve communication and participation among community members.</p></article>
-      <article class="card news-card"><small>Registration</small><h3>Family records</h3><p>Family registration will help the association build an accurate and verified community directory.</p></article>
-      <article class="card news-card"><small>Coming soon</small><h3>Meetings and activities</h3><p>Meeting notices and community activities will be shared after confirmation by the association.</p></article></div>
-    </div></section>
-    <section id="projects"><div class="container"><div class="section-head"><h2>Community Development</h2><p>Working together for a stronger and more prosperous Ikot Ukap Itam.</p></div>
-      <div class="empty-state"><h3>Projects and progress reports</h3><p>Project descriptions, budgets, photographs and progress updates can be added when verified information is provided by IUCDA.</p></div>
-    </div></section>
-    <section class="form-section" id="register"><div class="container"><div class="section-head"><h2>Community Registration</h2><p>Submit family or community representative information for review by the association.</p></div>
-      <form id="registrationForm">
-        <div class="form-grid">
-          <div class="field"><label for="recordType">Registration type *</label><select id="recordType" required><option value="">Select type</option><option>Family / Ekpuk</option><option>Family Head</option><option>Village Executive</option><option>Youth Organisation</option><option>Women Organisation</option><option>Community Member</option></select></div>
-          <div class="field"><label for="fullName">Full name *</label><input id="fullName" required placeholder="Enter full name"></div>
-          <div class="field"><label for="familyName">Family / Ekpuk name</label><input id="familyName" placeholder="Enter family name"></div>
-          <div class="field"><label for="position">Position / relationship</label><input id="position" placeholder="e.g. Family Head"></div>
-          <div class="field"><label for="phone">Phone number *</label><input id="phone" type="tel" required placeholder="Enter phone number"></div>
-          <div class="field"><label for="email">Email address</label><input id="email" type="email" placeholder="name@example.com"></div>
-          <div class="field"><label for="residence">Current town / country</label><input id="residence" placeholder="Where do you currently live?"></div>
-          <div class="field"><label for="members">Number of family members</label><input id="members" type="number" min="1" placeholder="Optional"></div>
-          <div class="field full"><label for="address">Family / contact address</label><textarea id="address" placeholder="Enter address or other relevant details"></textarea></div>
-          <div class="field full"><label><input type="checkbox" id="consent" required style="width:auto"> I confirm that the information supplied is accurate and consent to its review by authorised IUCDA representatives.</label></div>
-        </div>
-        <p class="form-note">Prototype notice: this form currently demonstrates the website interface only. It does not send information to IUCDA or a central database until a secure backend is connected.</p>
-        <button class="btn btn-brown" type="submit">Submit registration</button><div class="status" id="formStatus" role="status"></div>
-      </form>
-    </div></section>
-    <section id="contact"><div class="container"><div class="contact-box"><div><h2>Let us build together</h2><p>For official enquiries, community notices and verified information, contact the IUCDA leadership.</p></div><a class="btn btn-gold" href="#register">Submit your details</a></div></div></section>
-  </main>
-  <footer><div class="container footer-grid"><div><b>IKOT UKAP ITAM COMMUNITY DEVELOPMENT ASSOCIATION</b><div class="footer-small">Unity • Development • Prosperity</div></div><div class="footer-small">Ikot Ukap Itam, Itu LGA<br>Akwa Ibom State, Nigeria</div><div class="footer-small">© <span id="year"></span> IUCDA. Community platform.</div></div></footer>
-  <script>
-    const menuBtn=document.getElementById('menuBtn'), nav=document.getElementById('nav');
-    menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
-    nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
-    document.getElementById('year').textContent=new Date().getFullYear();
-    document.getElementById('registrationForm').addEventListener('submit',e=>{
-      e.preventDefault();
-      const status=document.getElementById('formStatus');
-      status.style.display='block';
-      status.textContent='Thank you. This demonstration form is working, but your details have not been sent or saved to an IUCDA database. A secure backend must be connected before collecting real registrations.';
-      e.target.reset();
+
+<div class="topbar">
+<div class="container">
+<span>Ikot Ukap Itam • Itu LGA • Akwa Ibom State, Nigeria</span>
+<span>Unity • Development • Prosperity</span>
+</div>
+</div>
+
+<header>
+<div class="container navwrap">
+<a class="brand" href="#home">
+<img src="assets/iucda-logo.jpg" alt="IUCDA Logo">
+<span><strong>IKOT UKAP ITAM</strong>Community Development Association</span>
+</a>
+
+<button class="menu-btn" id="menuBtn">☰</button>
+
+<nav id="nav">
+<a href="#home">Home</a>
+<a href="#about">About</a>
+<a href="#leadership">Leadership</a>
+<a href="#families">Families</a>
+<a href="#news">News</a>
+<a href="#projects">Projects</a>
+<a href="#register">Register</a>
+<a href="#contact">Contact</a>
+</nav>
+</div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+<div class="container hero-grid">
+<div>
+<div class="eyebrow">OUR COMMUNITY • OUR HERITAGE • OUR FUTURE</div>
+<h1>Welcome to Ikot Ukap Itam</h1>
+<p>
+The official digital home of Ikot Ukap Itam Community Development Association (IUCDA), connecting our people at home and in the diaspora to promote unity, preserve our heritage and support community development.
+</p>
+<div class="buttons">
+<a class="btn btn-gold" href="#about">Explore Our Community</a>
+<a class="btn btn-light" href="#register">Community Registration</a>
+</div>
+</div>
+
+<div class="hero-logo">
+<img src="assets/iucda-logo.jpg" alt="Ikot Ukap Itam Community Emblem">
+</div>
+</div>
+</section>
+
+<section id="about" class="about">
+<div class="container about-grid">
+<div>
+<span class="pill">ABOUT IUCDA</span>
+<h2 style="color:var(--brown)">Connecting our people. Building our future.</h2>
+<p>
+Ikot Ukap Itam is a proud community in Itu Local Government Area, Akwa Ibom State, Nigeria.
+</p>
+<p>
+The Ikot Ukap Itam Community Development Association provides a platform for community members to share information, participate in development initiatives and strengthen relationships across families and generations.
+</p>
+<p>
+This website serves residents, indigenes and members of the community living outside Ikot Ukap Itam.
+</p>
+</div>
+
+<div class="about-box">
+<h3>Our Guiding Values</h3>
+<p><b>Unity:</b> Encourage cooperation, respect and togetherness.</p>
+<p><b>Heritage:</b> Preserve our history, identity and cultural values.</p>
+<p><b>Development:</b> Support sustainable community progress.</p>
+<p><b>Service:</b> Promote responsible leadership and participation.</p>
+</div>
+</div>
+</section>
+
+<section>
+<div class="container">
+<div class="section-head">
+<h2>Explore Our Community</h2>
+<p>Key areas of community information and participation.</p>
+</div>
+
+<div class="cards">
+<article class="card"><div class="icon">🏛️</div><h3>Traditional Leadership</h3><p>Information about recognised traditional leadership and the village council.</p></article>
+<article class="card"><div class="icon">👥</div><h3>Village Executives</h3><p>Community association officers and their responsibilities.</p></article>
+<article class="card"><div class="icon">🏠</div><h3>Families & Family Heads</h3><p>A directory of recognised families and their representatives.</p></article>
+<article class="card"><div class="icon">🌱</div><h3>Youth & Women</h3><p>Updates on youth and women organisations and programmes.</p></article>
+<article class="card"><div class="icon">📰</div><h3>News & Announcements</h3><p>Community notices, meeting information and important updates.</p></article>
+<article class="card"><div class="icon">🛠️</div><h3>Development Projects</h3><p>Community priorities, projects and progress reports.</p></article>
+</div>
+</div>
+</section>
+
+<section class="directory" id="leadership">
+<div class="container">
+<div class="section-head">
+<h2>Community Leadership</h2>
+<p>Leadership details will be published after confirmation by the community.</p>
+</div>
+<div class="empty-state">
+<h3>Leadership Directory Coming Soon</h3>
+<p>Verified names, offices and tenure details will appear here after IUCDA confirms the official records.</p>
+</div>
+</div>
+</section>
+
+<section id="families">
+<div class="container">
+<div class="section-head">
+<h2>Families & Family Heads</h2>
+<p>Recognising the families that make up Ikot Ukap Itam.</p>
+</div>
+<div class="notice">
+<b>Family Directory:</b> Family names and family-head details will be published after verification. Families can submit their information through the registration form.
+</div>
+</div>
+</section>
+
+<section class="about" id="news">
+<div class="container">
+<div class="section-head">
+<h2>Community News & Announcements</h2>
+<p>Official updates will be published by authorised community administrators.</p>
+</div>
+<div class="cards">
+<article class="card news-card"><small>Community Information</small><h3>Welcome to the IUCDA Website</h3><p>This platform is being established to improve communication and participation among community members.</p></article>
+<article class="card news-card"><small>Registration</small><h3>Family Records</h3><p>Family registration will help the association build an accurate community directory.</p></article>
+<article class="card news-card"><small>Coming Soon</small><h3>Meetings and Activities</h3><p>Meeting notices and community activities will be shared after confirmation.</p></article>
+</div>
+</div>
+</section>
+
+<section id="projects">
+<div class="container">
+<div class="section-head">
+<h2>Community Development</h2>
+<p>Working together for a stronger and more prosperous Ikot Ukap Itam.</p>
+</div>
+<div class="empty-state">
+<h3>Projects and Progress Reports</h3>
+<p>Verified project descriptions, photographs and progress updates will be published here.</p>
+</div>
+</div>
+</section>
+
+<section class="form-section" id="register">
+<div class="container">
+<div class="section-head">
+<h2>Community Registration</h2>
+<p>Submit your family or community representative information for review.</p>
+</div>
+
+<form id="registrationForm">
+<div class="form-grid">
+
+<div class="field">
+<label for="recordType">Registration Type *</label>
+<select id="recordType" required>
+<option value="">Select type</option>
+<option>Family / Ekpuk</option>
+<option>Family Head</option>
+<option>Village Executive</option>
+<option>Youth Organisation</option>
+<option>Women Organisation</option>
+<option>Community Member</option>
+</select>
+</div>
+
+<div class="field">
+<label for="fullName">Full Name *</label>
+<input id="fullName" required>
+</div>
+
+<div class="field">
+<label for="familyName">Family / Ekpuk Name</label>
+<input id="familyName">
+</div>
+
+<div class="field">
+<label for="position">Position / Relationship</label>
+<input id="position" placeholder="e.g. Family Head">
+</div>
+
+<div class="field">
+<label for="phone">Phone Number *</label>
+<input id="phone" type="tel" required>
+</div>
+
+<div class="field">
+<label for="email">Email Address</label>
+<input id="email" type="email">
+</div>
+
+<div class="field">
+<label for="residence">Current Town / Country</label>
+<input id="residence" placeholder="Where do you currently live?">
+</div>
+
+<div class="field">
+<label for="members">Number of Family Members</label>
+<input id="members" type="number" min="1">
+</div>
+
+<div class="field full">
+<label for="address">Family / Contact Address</label>
+<textarea id="address"></textarea>
+</div>
+
+<div class="field full">
+<label>
+<input type="checkbox" id="consent" required style="width:auto">
+I confirm that the information supplied is accurate and consent to its review by authorised IUCDA representatives.
+</label>
+</div>
+
+</div>
+
+<p class="form-note">
+Your registration will be submitted for review. Approval is subject to verification by authorised IUCDA representatives.
+</p>
+
+<button class="btn btn-brown" type="submit">Submit Registration</button>
+<div class="status" id="formStatus" role="status" aria-live="polite"></div>
+</form>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<div class="contact-box">
+<div>
+<h2>Let Us Build Together</h2>
+<p>For official enquiries, community notices and verified information, contact the IUCDA leadership.</p>
+</div>
+<a class="btn btn-gold" href="#register">Submit Your Details</a>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="container footer-grid">
+<div>
+<b>IKOT UKAP ITAM COMMUNITY DEVELOPMENT ASSOCIATION</b>
+<div class="footer-small">Unity • Development • Prosperity</div>
+</div>
+<div class="footer-small">
+Ikot Ukap Itam, Itu LGA<br>
+Akwa Ibom State, Nigeria
+</div>
+<div class="footer-small">
+© <span id="year"></span> IUCDA. All rights reserved.
+</div>
+</div>
+</footer>
+
+<script>
+const API_URL = "https://script.google.com/macros/s/AKfycbyBQag-Qczi3LZMgzz0PCyxlO85B7SAJiqEqnlOL675kXiaFD3MEhPDThDFhz7YPWy0yA/exec";
+
+document.getElementById('year').textContent = new Date().getFullYear();
+
+const menuBtn = document.getElementById('menuBtn');
+const nav = document.getElementById('nav');
+
+if(menuBtn && nav){
+  menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a=>{
+    a.addEventListener('click',()=>nav.classList.remove('open'));
+  });
+}
+
+const form = document.getElementById('registrationForm');
+
+form.addEventListener('submit', async function(event){
+  event.preventDefault();
+
+  const status = document.getElementById('formStatus');
+  const button = form.querySelector('button[type="submit"]');
+
+  const payload = {
+    action:'register',
+    fullName:document.getElementById('fullName').value.trim(),
+    phone:document.getElementById('phone').value.trim(),
+    email:document.getElementById('email').value.trim(),
+    familyName:document.getElementById('familyName').value.trim(),
+    category:document.getElementById('recordType').value,
+    residence:document.getElementById('residence').value.trim(),
+    message:
+      'Position/Relationship: '+document.getElementById('position').value.trim()+
+      '; Family members: '+document.getElementById('members').value.trim()+
+      '; Address: '+document.getElementById('address').value.trim(),
+    consent:document.getElementById('consent').checked?'Yes':'No'
+  };
+
+  if(!payload.fullName || !payload.phone || !payload.category || payload.consent!=='Yes'){
+    status.style.display='block';
+    status.textContent='Please complete all required fields and tick the consent box.';
+    return;
+  }
+
+  button.disabled=true;
+  button.textContent='Submitting...';
+  status.style.display='block';
+  status.textContent='Submitting your registration. Please wait.';
+
+  try{
+    const response=await fetch(API_URL,{
+      method:'POST',
+      redirect:'follow',
+      headers:{'Content-Type':'text/plain;charset=utf-8'},
+      body:JSON.stringify(payload)
     });
-  </script>
+
+    const result=await response.json();
+
+    if(result.success){
+      status.textContent=result.message || 'Registration received. Awaiting verification.';
+      form.reset();
+    }else{
+      status.textContent=result.message || 'Registration failed. Please try again.';
+    }
+  }catch(error){
+    status.textContent='We could not confirm your submission. Please check your internet connection and try again.';
+  }finally{
+    button.disabled=false;
+    button.textContent='Submit Registration';
+  }
+});
+</script>
+
 </body>
-  </html>
+</html>
